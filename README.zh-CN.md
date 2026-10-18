@@ -67,6 +67,8 @@
 
 需要 Android 7.0 及以上、64 位 ARM 手机。Waifu Deck 不在 Google Play 上架，有新版本时应用会提醒你。每个 [GitHub Release](https://github.com/fancydirty/waifu-deck/releases) 也附有同一个 APK，可以用 [Obtainium](https://github.com/ImranR98/Obtainium) 跟踪更新。
 
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22app.waifudeck.mobile%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Ffancydirty%2Fwaifu-deck%22%2C%22author%22%3A%22fancydirty%22%2C%22name%22%3A%22Waifu%20Deck%22%7D"><img src="docs/images/readme/badge-obtainium.png" height="48" alt="用 Obtainium 获取" /></a>
+
 ## 图源
 
 | 图源 | 内容 | 备注 |

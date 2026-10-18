@@ -67,6 +67,8 @@ Most anime-art apps wrap a single site, want an account, and lose your favorites
 
 Needs Android 7.0 or later on a 64-bit ARM phone. Waifu Deck is not on Google Play; the app tells you when a new version is out. The same APK is attached to every [GitHub release](https://github.com/fancydirty/waifu-deck/releases), so you can also follow updates with [Obtainium](https://github.com/ImranR98/Obtainium).
 
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22app.waifudeck.mobile%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Ffancydirty%2Fwaifu-deck%22%2C%22author%22%3A%22fancydirty%22%2C%22name%22%3A%22Waifu%20Deck%22%7D"><img src="docs/images/readme/badge-obtainium.png" height="48" alt="Get it on Obtainium" /></a>
+
 ## Image sources
 
 | Source | Content | Notes |
