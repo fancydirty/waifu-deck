@@ -1,0 +1,13 @@
+{
+  "capturedAt": "2026-08-07",
+  "endpoint": "https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&limit=1",
+  "method": "One unauthenticated request per rating filter; response objects reduced to the rating field used by the adapter.",
+  "observedResponses": [
+    { "query": "rating:general", "rating": "general" },
+    { "query": "rating:safe", "rating": "safe" },
+    { "query": "rating:questionable", "rating": "questionable" }
+  ],
+  "emptyResponses": [
+    { "query": "rating:explicit", "result": [] }
+  ]
+}

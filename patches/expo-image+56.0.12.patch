@@ -1,0 +1,140 @@
+diff --git a/node_modules/expo-image/android/src/main/java/expo/modules/image/ExpoImageViewWrapper.kt b/node_modules/expo-image/android/src/main/java/expo/modules/image/ExpoImageViewWrapper.kt
+index 7abe582..f9640eb 100644
+--- a/node_modules/expo-image/android/src/main/java/expo/modules/image/ExpoImageViewWrapper.kt
++++ b/node_modules/expo-image/android/src/main/java/expo/modules/image/ExpoImageViewWrapper.kt
+@@ -38,7 +38,6 @@ import expo.modules.kotlin.tracing.beginAsyncTraceBlock
+ import expo.modules.kotlin.tracing.trace
+ import expo.modules.kotlin.viewevent.EventDispatcher
+ import expo.modules.kotlin.views.ExpoView
+-import jp.wasabeef.glide.transformations.BlurTransformation
+ import java.lang.ref.WeakReference
+ import kotlin.math.abs
+ import kotlin.math.min
+@@ -444,7 +443,7 @@ class ExpoImageViewWrapper(context: Context, appContext: AppContext) : ExpoView(
+         diskCacheStrategy(DiskCacheStrategy.NONE)
+       }
+       .customize(blurRadius) {
+-        transform(BlurTransformation(min(it, 25), 4))
++        transform(NoRsBlurTransformation(min(it, 25), 4))
+       }
+   }
+ 
+diff --git a/node_modules/expo-image/android/src/main/java/expo/modules/image/NoRsBlurTransformation.kt b/node_modules/expo-image/android/src/main/java/expo/modules/image/NoRsBlurTransformation.kt
+new file mode 100644
+index 0000000..7df8150
+--- /dev/null
++++ b/node_modules/expo-image/android/src/main/java/expo/modules/image/NoRsBlurTransformation.kt
+@@ -0,0 +1,113 @@
++package expo.modules.image
++
++import android.content.Context
++import android.graphics.Bitmap
++import android.graphics.Canvas
++import android.graphics.Paint
++import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool
++import com.bumptech.glide.load.resource.bitmap.BitmapTransformation
++import java.security.MessageDigest
++
++/**
++ * N10 T3 (owner ruling 2026-10-13): expo-image's `blurRadius` used to route to
++ * wasabeef glide-transformations 4.3.0's BlurTransformation, whose
++ * RenderScript intrinsic segfaults the whole app on Android 16 (Honor
++ * PGT-AN20: SIGSEGV null deref in libRSDriver.so rsdScriptSetGlobalObj on a
++ * glide-source thread — a native crash no Java handler can catch). This class
++ * keeps the same contract — downscale by `sampling`, blur with `radius`,
++ * return the small bitmap for the view to stretch — with three box-blur
++ * passes over the pixels, which approximates the Gaussian the RS intrinsic
++ * produced and touches no platform blur engine, so the blur works on every
++ * Android version instead of crashing on some.
++ */
++class NoRsBlurTransformation(
++  private val radius: Int,
++  private val sampling: Int,
++) : BitmapTransformation() {
++  override fun transform(
++    context: Context,
++    pool: BitmapPool,
++    toTransform: Bitmap,
++    outWidth: Int,
++    outHeight: Int,
++  ): Bitmap {
++    val scaledWidth = toTransform.width / sampling
++    val scaledHeight = toTransform.height / sampling
++    if (scaledWidth == 0 || scaledHeight == 0) return toTransform
++    val bitmap = pool.get(scaledWidth, scaledHeight, Bitmap.Config.ARGB_8888)
++    val canvas = Canvas(bitmap)
++    val paint = Paint(Paint.FILTER_BITMAP_FLAG)
++    canvas.scale(1f / sampling, 1f / sampling)
++    canvas.drawBitmap(toTransform, 0f, 0f, paint)
++
++    val w = bitmap.width
++    val h = bitmap.height
++    // The RS intrinsic took a Gaussian sigma up to 25 on this same small
++    // bitmap; three box passes with window radius ≈ 2σ land in the same
++    // visual range. Clamped so the window never exceeds the bitmap.
++    val boxRadius = (radius * 2).coerceAtMost((minOf(w, h) - 1) / 2).coerceAtLeast(1)
++    val pixels = IntArray(w * h)
++    val scratch = IntArray(w * h)
++    bitmap.getPixels(pixels, 0, w, 0, 0, w, h)
++    repeat(3) {
++      boxBlurPass(pixels, scratch, w, h, boxRadius, horizontal = true)
++      boxBlurPass(scratch, pixels, w, h, boxRadius, horizontal = false)
++    }
++    bitmap.setPixels(pixels, 0, w, 0, 0, w, h)
++    return bitmap
++  }
++
++  private fun boxBlurPass(
++    src: IntArray,
++    dst: IntArray,
++    w: Int,
++    h: Int,
++    radius: Int,
++    horizontal: Boolean,
++  ) {
++    val window = radius * 2 + 1
++    val outer = if (horizontal) h else w
++    val inner = if (horizontal) w else h
++    for (line in 0 until outer) {
++      var a = 0
++      var r = 0
++      var g = 0
++      var b = 0
++      for (i in -radius..radius) {
++        val p = samplePixel(src, line, i.coerceIn(0, inner - 1), w, horizontal)
++        a += p ushr 24
++        r += (p shr 16) and 0xFF
++        g += (p shr 8) and 0xFF
++        b += p and 0xFF
++      }
++      for (x in 0 until inner) {
++        writePixel(dst, line, x, w, horizontal, (a / window shl 24) or
++          (r / window shl 16) or (g / window shl 8) or (b / window))
++        val po = samplePixel(src, line, (x - radius).coerceIn(0, inner - 1), w, horizontal)
++        val pi = samplePixel(src, line, (x + radius + 1).coerceIn(0, inner - 1), w, horizontal)
++        a += (pi ushr 24) - (po ushr 24)
++        r += ((pi shr 16) and 0xFF) - ((po shr 16) and 0xFF)
++        g += ((pi shr 8) and 0xFF) - ((po shr 8) and 0xFF)
++        b += (pi and 0xFF) - (po and 0xFF)
++      }
++    }
++  }
++
++  private fun samplePixel(src: IntArray, line: Int, x: Int, w: Int, horizontal: Boolean): Int =
++    if (horizontal) src[line * w + x] else src[x * w + line]
++
++  private fun writePixel(dst: IntArray, line: Int, x: Int, w: Int, horizontal: Boolean, value: Int) {
++    if (horizontal) dst[line * w + x] = value else dst[x * w + line] = value
++  }
++
++  override fun equals(other: Any?): Boolean =
++    other is NoRsBlurTransformation && other.radius == radius && other.sampling == sampling
++
++  override fun hashCode(): Int = (radius * 31 + sampling) * 31
++
++  override fun updateDiskCacheKey(messageDigest: MessageDigest) {
++    messageDigest.update("no-rs-blur".toByteArray(Charsets.UTF_8))
++    messageDigest.update(radius.toByte())
++    messageDigest.update(sampling.toByte())
++  }
++}

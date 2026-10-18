@@ -1,0 +1,7 @@
+{
+  "name": "waifu-sync-service",
+  "version": "1.0.0",
+  "description": "Local Expo module: dataSync foreground service and a timeout-free, progress-reporting S3 upload on the app's tuned OkHttp client.",
+  "main": "index.ts",
+  "private": true
+}

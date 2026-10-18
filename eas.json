@@ -1,0 +1,66 @@
+{
+  "cli": {
+    "version": ">= 21.0.2",
+    "appVersionSource": "local"
+  },
+  "build": {
+    "development-direct": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "direct"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview-direct": {
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "direct"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview-store": {
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "store"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "cloud-test-direct": {
+      "withoutCredentials": true,
+      "env": {
+        "APP_VARIANT": "direct",
+        "E2E_TEST_MODE": "1",
+        "E2E_FIXTURE_BASE_URL": "https://waifu-deck-e2e-fixtures.fancydirty.workers.dev"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "cloud-test-store": {
+      "withoutCredentials": true,
+      "env": {
+        "APP_VARIANT": "store",
+        "E2E_TEST_MODE": "1",
+        "E2E_FIXTURE_BASE_URL": "https://waifu-deck-e2e-fixtures.fancydirty.workers.dev"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production-store": {
+      "env": {
+        "APP_VARIANT": "store"
+      }
+    }
+  },
+  "submit": {
+    "production-store": {}
+  }
+}

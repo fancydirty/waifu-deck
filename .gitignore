@@ -1,0 +1,69 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# Python bytecode from local helper scripts
+__pycache__/
+*.pyc
+
+example
+
+# generated native folders
+/ios
+/android
+
+# test and verification artifacts
+coverage/
+.superpowers/
+.serena/
+.worktrees/
+*.db
+/collection/
+artifacts/verification/
+artifacts/content-quality/
+.playwright-cli/
+.opencode/
+
+# #13: signing material never enters the repository (the owner's key lives in
+# ~/.config/waifu-deck/signing/; the Expo template debug.keystore under android/
+# is generated and ignored with the whole android/ tree)
+*.keystore
+release.properties
+
+# Owner-provided credentials for the workspace (Google OAuth client JSON etc.).
+# Everything under secrets/ stays local; nothing here is ever committed.
+/secrets/

@@ -1,0 +1,102 @@
+{
+  "format": "wdlib001-fixtures-v1",
+  "seed": "wdlib001-fixture",
+  "fixtures": [
+    {
+      "file": "original-1.wdlib",
+      "scope": "original",
+      "assetId": "af193a8cdcd0e3fb39e71147e59efa5cad40763d2611f5beff34a274f514362f",
+      "masterKey": "0bd45dbdb5d356f1361e6a085a26156c0531274c4e0f0e5c65bcceb8ae13ee03",
+      "plaintextBytes": 1,
+      "plaintextSha256": "af193a8cdcd0e3fb39e71147e59efa5cad40763d2611f5beff34a274f514362f"
+    },
+    {
+      "file": "original-17.wdlib",
+      "scope": "original",
+      "assetId": "c1f3cc1c1819ff3810f1085f44bf0c3e0e711c89f7eb2a264f7fd14891100d3e",
+      "masterKey": "0f4373fa17821b26050b04bd311ef3fa5d0c73395689e614fcee86ffed3054cb",
+      "plaintextBytes": 17,
+      "plaintextSha256": "c1f3cc1c1819ff3810f1085f44bf0c3e0e711c89f7eb2a264f7fd14891100d3e"
+    },
+    {
+      "file": "original-65537.wdlib",
+      "scope": "original",
+      "assetId": "8fbd7bde089f63239021ac9c77cb04649779e9a8fd3d95b9da4f3f8ebb61ff90",
+      "masterKey": "63e939158f00dcaa1a57607a15fa335372a1cfb763a6091ede479a360d15e9c1",
+      "plaintextBytes": 65537,
+      "plaintextSha256": "8fbd7bde089f63239021ac9c77cb04649779e9a8fd3d95b9da4f3f8ebb61ff90"
+    },
+    {
+      "file": "original-1048579.wdlib",
+      "scope": "original",
+      "assetId": "b99b9b62b7f7ca616e9b5084b4f21d48eb5d259f6994f99d7f726b62a06e4a9d",
+      "masterKey": "dacadcd25db792cf4580d2eefdbd4b0e1c22559f106dd40aecdd8475eb167c15",
+      "plaintextBytes": 1048579,
+      "plaintextSha256": "b99b9b62b7f7ca616e9b5084b4f21d48eb5d259f6994f99d7f726b62a06e4a9d"
+    },
+    {
+      "file": "thumbnail-1.wdlib",
+      "scope": "thumbnail",
+      "assetId": "e9b0c031f0493d3fd6b0b668260c79e7efe734bfd4b4115f9d82bc3be609c294",
+      "masterKey": "3cc2f16f0935a10690e7462f352572eaba0248337d3da306e8158a759b7bb016",
+      "plaintextBytes": 1,
+      "plaintextSha256": "e9b0c031f0493d3fd6b0b668260c79e7efe734bfd4b4115f9d82bc3be609c294"
+    },
+    {
+      "file": "thumbnail-17.wdlib",
+      "scope": "thumbnail",
+      "assetId": "4a75d4829ccc574a8f0a4d109e545c3870d31309983eb068cc00a8502a89cf40",
+      "masterKey": "1b73020075ca23dc8f1f2ff5cb5312f1e1fdc4a340242e5165548572305b9943",
+      "plaintextBytes": 17,
+      "plaintextSha256": "4a75d4829ccc574a8f0a4d109e545c3870d31309983eb068cc00a8502a89cf40"
+    },
+    {
+      "file": "thumbnail-65537.wdlib",
+      "scope": "thumbnail",
+      "assetId": "11d15aa6ce4665fae76648999d31850103b9c975736c0ad6d6ef5a6f80fa6860",
+      "masterKey": "bba8fd2d57e78086d8f2c70713cdc5587a3694c7b5d4120cc97079a65812ae64",
+      "plaintextBytes": 65537,
+      "plaintextSha256": "11d15aa6ce4665fae76648999d31850103b9c975736c0ad6d6ef5a6f80fa6860"
+    },
+    {
+      "file": "thumbnail-1048579.wdlib",
+      "scope": "thumbnail",
+      "assetId": "163d7e8f4d2ccd83ca9c7bcf54518d7a9781d34a18dad9e6b7aeb245d6a10f58",
+      "masterKey": "41ac2a0b1f7243ccf7a99956b710425c07e34b8232a1079884f230238cadfd12",
+      "plaintextBytes": 1048579,
+      "plaintextSha256": "163d7e8f4d2ccd83ca9c7bcf54518d7a9781d34a18dad9e6b7aeb245d6a10f58"
+    },
+    {
+      "file": "preview-1.wdlib",
+      "scope": "preview",
+      "assetId": "4d6a8e90039fc9782a1bbbd3cced923633e38eb83cf857d2e795e9ea13ef7d4d",
+      "masterKey": "5d96db71925edfcdd007b5009ce4cf795f8edbf5de09865e0866fe71274ab743",
+      "plaintextBytes": 1,
+      "plaintextSha256": "4d6a8e90039fc9782a1bbbd3cced923633e38eb83cf857d2e795e9ea13ef7d4d"
+    },
+    {
+      "file": "preview-17.wdlib",
+      "scope": "preview",
+      "assetId": "79455f1a076313a42bb27dd77783ca9c9482cc7e42fc884c831157ab27eb4ec4",
+      "masterKey": "1553b877f92e2107a1e55bacf8069e84ca0e0349bd484d5da100af359c44615a",
+      "plaintextBytes": 17,
+      "plaintextSha256": "79455f1a076313a42bb27dd77783ca9c9482cc7e42fc884c831157ab27eb4ec4"
+    },
+    {
+      "file": "preview-65537.wdlib",
+      "scope": "preview",
+      "assetId": "6458f771a4732ac5b6d720a8c6079cb07a0e57278e03dbfd59e39a0243719b44",
+      "masterKey": "4db52044d502d470282328c34faa76929e5c16e64635201fffb3aee04e80033a",
+      "plaintextBytes": 65537,
+      "plaintextSha256": "6458f771a4732ac5b6d720a8c6079cb07a0e57278e03dbfd59e39a0243719b44"
+    },
+    {
+      "file": "preview-1048579.wdlib",
+      "scope": "preview",
+      "assetId": "506fcdba17724e326ff41869a6c8854e7098af3d777eea1165431372923b7ed7",
+      "masterKey": "b0899a7a2a2351e65e49f40071b0271260dab2090d6efe29471fbe285d795416",
+      "plaintextBytes": 1048579,
+      "plaintextSha256": "506fcdba17724e326ff41869a6c8854e7098af3d777eea1165431372923b7ed7"
+    }
+  ]
+}

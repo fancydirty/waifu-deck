@@ -1,0 +1,17 @@
+{
+  "capturedAt": "2026-08-08",
+  "endpoint": "https://yande.re/post.json",
+  "storeSafeQueryTag": "rating:s",
+  "nativeRatings": ["s", "q", "e"],
+  "canonicalMap": {
+    "s": "safe",
+    "q": "nsfw_unspecified",
+    "e": "explicit"
+  },
+  "examples": {
+    "s": { "id": 1266851, "rating": "s" },
+    "q": { "id": 1266852, "rating": "q" },
+    "e": { "id": 1266822, "rating": "e" }
+  },
+  "notes": "rating:general is NOT Store-safe (probe returned q)."
+}
