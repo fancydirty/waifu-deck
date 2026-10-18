@@ -9,6 +9,7 @@
 [![Latest release](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fwaifudeck.app%2Fapi%2Fapp%2Flatest&query=%24.versionName&label=release&color=e35d6a)](https://waifudeck.app/api/app/download)
 ![Android 7.0+](https://img.shields.io/badge/Android-7.0%2B-3ddc84?logo=android&logoColor=white)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
+[![CI](https://github.com/fancydirty/waifu-deck/actions/workflows/ci.yml/badge.svg)](https://github.com/fancydirty/waifu-deck/actions/workflows/ci.yml)
 ![No account, no ads, no tracking](https://img.shields.io/badge/no%20account-no%20ads%20%C2%B7%20no%20tracking-8a7f76)
 
 [**Download APK**](https://waifudeck.app/api/app/download) · [Website](https://waifudeck.app) · [Privacy](https://waifudeck.app/privacy) · [简体中文](README.zh-CN.md)
@@ -64,7 +65,7 @@ Most anime-art apps wrap a single site, want an account, and lose your favorites
 2. Open it, and allow your browser or file manager to install apps when Android asks.
 3. Start swiping. There is nothing to set up and nothing to sign in to.
 
-Needs Android 7.0 or later on a 64-bit ARM phone. Waifu Deck is not on Google Play; the app tells you when a new version is out.
+Needs Android 7.0 or later on a 64-bit ARM phone. Waifu Deck is not on Google Play; the app tells you when a new version is out. The same APK is attached to every [GitHub release](https://github.com/fancydirty/waifu-deck/releases), so you can also follow updates with [Obtainium](https://github.com/ImranR98/Obtainium).
 
 ## Image sources
 
@@ -132,7 +133,7 @@ Uninstalling removes the app's private storage. Export a `.waifudeck` backup or 
 
 ## Build from source
 
-You need Node.js (LTS), JDK 17 and the Android SDK. The app is built with [Expo SDK 56](https://docs.expo.dev/versions/v56.0.0/) and React Native.
+You need Node.js 24 or newer, JDK 17 and the Android SDK. The app is built with [Expo SDK 56](https://docs.expo.dev/versions/v56.0.0/) and React Native.
 
 ```bash
 npm ci

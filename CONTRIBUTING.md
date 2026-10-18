@@ -4,7 +4,7 @@ Thanks for helping. Bug reports, new image sources and new storage backends are 
 
 ## Setup
 
-You need Node.js 22, JDK 17 and the Android SDK.
+You need Node.js 24 or newer, JDK 17 and the Android SDK.
 
 ```bash
 npm ci

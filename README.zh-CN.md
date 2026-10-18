@@ -9,6 +9,7 @@
 [![最新版本](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fwaifudeck.app%2Fapi%2Fapp%2Flatest&query=%24.versionName&label=release&color=e35d6a)](https://waifudeck.app/api/app/download)
 ![Android 7.0+](https://img.shields.io/badge/Android-7.0%2B-3ddc84?logo=android&logoColor=white)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
+[![CI](https://github.com/fancydirty/waifu-deck/actions/workflows/ci.yml/badge.svg)](https://github.com/fancydirty/waifu-deck/actions/workflows/ci.yml)
 ![无账号 · 无广告 · 无追踪](https://img.shields.io/badge/%E6%97%A0%E8%B4%A6%E5%8F%B7-%E6%97%A0%E5%B9%BF%E5%91%8A%20%C2%B7%20%E6%97%A0%E8%BF%BD%E8%B8%AA-8a7f76)
 
 [**下载 APK**](https://waifudeck.app/api/app/download) · [官网](https://waifudeck.app/zh/) · [隐私政策](https://waifudeck.app/privacy) · [English](README.md)
@@ -64,7 +65,7 @@
 2. 打开安装；如果 Android 提示，允许浏览器或文件管理器安装应用。
 3. 开始滑。没有要设置的，也没有要登录的。
 
-需要 Android 7.0 及以上、64 位 ARM 手机。Waifu Deck 不在 Google Play 上架，有新版本时应用会提醒你。
+需要 Android 7.0 及以上、64 位 ARM 手机。Waifu Deck 不在 Google Play 上架，有新版本时应用会提醒你。每个 [GitHub Release](https://github.com/fancydirty/waifu-deck/releases) 也附有同一个 APK，可以用 [Obtainium](https://github.com/ImranR98/Obtainium) 跟踪更新。
 
 ## 图源
 
@@ -132,7 +133,7 @@ Waifu Deck 没有账号，也没有后端。它只连你开启的图源；如果
 
 ## 从源码构建
 
-需要 Node.js（LTS）、JDK 17 和 Android SDK。应用基于 [Expo SDK 56](https://docs.expo.dev/versions/v56.0.0/) 和 React Native。
+需要 Node.js 24 或更新版本、JDK 17 和 Android SDK。应用基于 [Expo SDK 56](https://docs.expo.dev/versions/v56.0.0/) 和 React Native。
 
 ```bash
 npm ci
