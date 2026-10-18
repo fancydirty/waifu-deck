@@ -11,10 +11,13 @@ import { fireEvent, render, screen } from '@testing-library/react-native';
 
 import SegmentedControl from '@/components/segmented-control';
 
-jest.mock('react-native/Libraries/Utilities/Platform', () => ({
-  OS: 'android',
-  select: (value: Record<string, unknown>) => value.android,
-}));
+jest.mock('react-native/Libraries/Utilities/Platform', () => {
+  const platform = {
+    OS: 'android',
+    select: (value: Record<string, unknown>) => value.android,
+  };
+  return { __esModule: true, default: platform, ...platform };
+});
 
 describe('SegmentedControl (native resolve, Android)', () => {
   test('pressing a segment fires onChange with the pressed index', async () => {
